@@ -1,8 +1,9 @@
+{% load static %}
 <header>
   <nav class="navbar navbar-light" style="background-color: lightskyblue">
     <div class="container">
       <a class="navbar-brand" href="{% url 'notes:home' %}">
-        <span class="text-danger"><b>Ya</b></span>Note
+        <span class="text-danger"><b>No</b></span>te
       </a>
       {% if user.is_authenticated %}
           <div class="nav-item align-self-center mt-1">

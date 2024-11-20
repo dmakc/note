@@ -1,8 +1,10 @@
+from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import include, path
 from django.views.generic import CreateView
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('notes.urls')),
@@ -34,3 +36,8 @@ auth_urls = ([
 ], 'users')
 
 urlpatterns += [path('auth/', include(auth_urls))]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.STATIC_URL, document_root=settings.STATIC_ROOT
+    )

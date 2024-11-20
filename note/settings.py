@@ -6,19 +6,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-yipnj$#j!ajarq%k55z4kuf3x79)91h0h42o9!1ho(z=!%mt=#'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
+    'django_bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'notes.apps.NotesConfig'
+    'notes.apps.NotesConfig',
 ]
 
 MIDDLEWARE = [
@@ -31,7 +32,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'yanote.urls'
+ROOT_URLCONF = 'note.urls'
 
 TEMPLATES = [
     {
@@ -49,7 +50,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'yanote.wsgi.application'
+WSGI_APPLICATION = 'note.wsgi.application'
 
 
 DATABASES = {
@@ -82,6 +83,10 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static_dev',
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

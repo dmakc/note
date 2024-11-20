@@ -3,6 +3,8 @@ from django.db import models
 
 from pytils.translit import slugify
 
+from core.constants import MAX_SLICE
+
 
 class Note(models.Model):
     title = models.CharField(
@@ -28,11 +30,16 @@ class Note(models.Model):
         on_delete=models.CASCADE,
     )
 
-    def __str__(self):
-        return self.title
-
     def save(self, *args, **kwargs):
         if not self.slug:
             max_slug_length = self._meta.get_field('slug').max_length
             self.slug = slugify(self.title)[:max_slug_length]
         super().save(*args, **kwargs)
+
+    class Meta:
+        ordering = ['title']
+        verbose_name = 'заметки'
+        verbose_name_plural = 'Заметки'
+
+    def __str__(self):
+        return self.title[:MAX_SLICE]
